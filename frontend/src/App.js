@@ -23,28 +23,27 @@ const Child = {};
 function App() {
   const [menuActive, setMenuActive] = React.useState(false)
   
+  const toggleMenu = () => {
+    setMenuActive(!menuActive)
+  }
+  
   return (
     <div className="app">
       <nav className={"fixed bg-fam-bg-dark h-screen w-screen z-50 p-8 space-y-8 transition-all " + (menuActive ? 'right-0' : 'right-full')}>
         <p className="text-4xl lowercase font-display drop-shadow-xl font-[900]">Tribe</p>
         <ul className="space-y-8 text-lg">
           <li>
-            <Link className="flex flex-row items-center space-x-2" to="/">
+            <Link className="flex flex-row items-center space-x-2" to="/" onClick={toggleMenu}>
               <ChartSquareBarIcon className="w-8 h-8 inline" /> <span>Dashboard</span>
             </Link>
           </li>
           <li>
-            <Link className="flex flex-row items-center space-x-2" to="/family/BitDevs">
-              <ContactsIcon className="w-8 h-8 inline" /> <span>BitDevs Family</span>
-            </Link>
-          </li>
-          <li>
-            <Link className="flex flex-row items-center space-x-2" to="/">
+            <Link className="flex flex-row items-center space-x-2" to="/family" onClick={toggleMenu}>
               <ContactsIcon className="w-8 h-8 inline" /> <span>Accounts</span>
             </Link>
           </li>
           <li>
-            <Link className="flex flex-row items-center space-x-2" to="/">
+            <Link className="flex flex-row items-center space-x-2" to="/" onClick={toggleMenu}>
               <GearIcon className="w-8 h-8 inline" /> <span>Settings</span>
             </Link>
           </li>
@@ -60,11 +59,6 @@ function App() {
         <Route path="invite" element={<Invite />} />
         <Route path="new-family" element={<NewFamily />} />
         <Route path="/" element={<Home />}>
-          <Route path="family" element={<Family />}>
-            <Route path=":family" element={<Accounts />}>
-              <Route path=":account" element={<Account />} />
-            </Route>
-          </Route>
           <Route
             path="*"
             element={
@@ -74,6 +68,8 @@ function App() {
             }
           />
         </Route>
+        <Route path="family" element={<Family />} />
+        <Route path="family/:account" element={<Account />} />
       </Routes>
     </div>
   );

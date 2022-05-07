@@ -24,3 +24,11 @@ h1, h2 {
 .tile {
     @apply rounded-lg bg-fam-bg-dark p-8 drop-shadow-lg my-4 border border-fam-teal border-solid space-y-4 flex flex-col;
 }
+
+.slots {
+    @apply rounded-lg bg-fam-bg-dark drop-shadow-lg my-4 border border-fam-teal border-solid flex flex-col;
+}
+
+.slots *:last-child {
+    @apply border-b-0;
+}
