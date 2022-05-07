@@ -1,22 +1,13 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-
-const firebaseConfig = require("../service-account.json");
-console.log(firebaseConfig);
-
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
+const utils = require('../utils/debug');
+const admin = require('firebase-admin');
+const GOOGLE_APPLICATION_CREDENTIALS = JSON.parse(
+  Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, 'base64').toString(
+    'utf-8'
+  )
+);
+admin.initializeApp({
+  credential: admin.credential.cert(GOOGLE_APPLICATION_CREDENTIALS),
+});
+const db = admin.firestore();
 utils.info(`Connection to GCP Project ${db.projectId} successful!`);
-export default db;
-
-export const getFamily = async (familyName) => {
-  const querySnapshot = await getDocs(collection(db, "families"));
-  let res = null;
-  const docs = await querySnapshot.forEach((doc) => {
-    if (doc.data()["family-name"] === familyName) {
-      res = doc.data();
-    }
-  });
-  return res;
-};
+module.exports = db;

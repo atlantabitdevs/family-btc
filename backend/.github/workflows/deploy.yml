@@ -1,0 +1,49 @@
+name: park-ln
+
+on:
+  push:
+    branches:
+      - master
+      - devops/deploy/backend
+
+env:
+  CLOUD_RUN_PROJECT_ID: park-lightning
+  CLOUD_RUN_REGION: us-east1
+  REPO_NAME: park-lightning
+
+jobs:
+  deploy-backend:
+    name: Deploy Backend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: $CLOUD_RUN_PROJECT_ID
+          credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
+
+      - name: test gcloud CLI
+        run: gcloud info
+
+      - name: Enable the necessary APIs and enable docker auth
+        run: |-
+          gcloud services enable containerregistry.googleapis.com
+          gcloud services enable run.googleapis.com
+          gcloud --quiet auth configure-docker
+      - name: Build and tag image
+        run: |-
+          docker build . --tag "gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA"
+      - name: Push image to GCR
+        run: |-
+          docker push gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA
+      - name: Deploy
+        run: |-
+          gcloud components install beta --quiet
+          gcloud beta run deploy $REPO_NAME --image gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA \
+            --project $CLOUD_RUN_PROJECT_ID \
+            --platform managed \
+            --region $CLOUD_RUN_REGION \
+            --allow-unauthenticated \
+            --quiet
