@@ -8,3 +8,15 @@
 .app {
     @apply bg-fam-bg-dark text-white min-h-screen font-light flex flex-col;
 }
+
+.default-bg {
+    @apply fixed h-screen w-screen;
+    opacity: 0.10;
+    filter: blur(8px);
+    background-image: url('../public/pebbles.jpg');
+    background-size: cover;
+}
+
+h1, h2 {
+    @apply font-display;
+}
