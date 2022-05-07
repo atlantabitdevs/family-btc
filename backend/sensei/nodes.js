@@ -1,37 +1,28 @@
-const fetch = require('node-fetch');
 const BASE_URL = process.env.BASE_URL;
+const apiCall = require('../utils/apiCall');
 
 const getUnusedAddress = async () => {
-    const res = await fetch(`${BASE_URL}/v1/node/wallet/address`);
-    console.log(res);
-    return await res.json();
+    const { address } = await apiCall('/v1/node/wallet/address', 'GET')
+    return await address.json();
 }
 
 const getBalance = async () => {
-    const res = await fetch(`${BASE_URL}/v1/node/wallet/balance`);
-    console.log(res);
-    return await res.json();
+    const { balance } = await apiCall('/v1/node/wallet/balance', 'GET')
+    return await balance.json();
 }
 
 const getChannels = async ({ page, searchTerm, take }) => {
-    const { channels, pagination } = await fetch(
-        `${BASE_URL}/v1/node/channels?page=${page}&take=${take}&query=${searchTerm}`, {
-        method: 'GET'
-    });
-
+    const { channels, pagination } = await apiCall(`/v1/node/channels?page=${page}&take=${take}&query=${searchTerm}`, 'GET')
     return await channels.json();
 }
 
-const getPayments = async ({ filter = {}, pagination }) => {
-    const { page, take, } = pagination;
-
-    const res = await fetch(`${BASE_URL}/v1/node/payments?page=${page}&take=${take}`);
-
-    return await res.json();
+const getPayments = async (page, take) => {
+    const { payments } = await apiCall(`/v1/node/payments?page=${page}&take=${take}`, 'GET')
+    return await payments.json();
 }
 
 const getInfo = async () => {
-    const { node_info } = await fetch(`${BASE_URL}/v1/node/info`);
+    const { node_info } = await apiCall(`/v1/node/payments?page=${page}&take=${take}`, 'GET')
 
     return {
         version: node_info.version,
@@ -45,7 +36,6 @@ const getInfo = async () => {
 
 const getPeers = async () => {
     const { peers } = await fetch(`${BASE_URL}/v1/node/peers`);
-
     return await peers.json();
 }
 
@@ -103,6 +93,16 @@ const keySend = async (destPubkey, amtMsat) => {
     );
 }
 
+
 module.exports = {
-    getBalance
+    getUnusedAddress,
+    getBalance,
+    getChannels,
+    getPayments,
+    getInfo,
+    getPeers,
+    stopNode,
+    createInvoice,
+    payInvoice,
+    keySend,
 }
