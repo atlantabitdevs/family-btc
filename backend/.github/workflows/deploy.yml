@@ -1,15 +1,14 @@
-name: park-ln
+name: family-btc
 
 on:
   push:
     branches:
-      - master
-      - devops/deploy/backend
+      - main
 
 env:
-  CLOUD_RUN_PROJECT_ID: park-lightning
+  CLOUD_RUN_PROJECT_ID: atl-bitdevs-hackathons
   CLOUD_RUN_REGION: us-east1
-  REPO_NAME: park-lightning
+  REPO_NAME: familybtc
 
 jobs:
   deploy-backend:
