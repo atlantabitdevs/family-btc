@@ -1,0 +1,37 @@
+{
+    "d8d05dce-dbae-421b-9bdd-ea3ce75b7a77": {
+        "address": "691 John Wesley Dobbs Ave, Atlanta, GA 30312",
+        "occupied": true,
+        "licensePlate": "SC39133",
+        "start": 1648317620,
+        "expiration": 1648319420,
+        "duration": 1800,
+        "expired": true
+    },
+    "da1c0d1b-1ecf-4fe0-9acd-dc3d49640f8f": {
+        "address": "79 5th St NW, Atlanta, GA 30308",
+        "occupied": false
+    },
+    "e74d1791-1ef9-4a5a-b98f-0d7d67e533e1": {
+        "address": "817 W Peachtree St NE, Atlanta, GA 30308",
+        "occupied": true,
+        "licensePlate": "8BQN612",
+        "startTime": 1648321556,
+        "expiration": 1649014216,
+        "duration": 604800,
+        "expired": false
+    },
+    "4420c88b-a0dd-470c-925c-c713a73b8f17": {
+        "address": "79 5th St NW, Atlanta, GA 30308",
+        "licensePlate": "7MSW817",
+        "occupied": true,
+        "startTime": 1648317607,
+        "expiration": 1648324807,
+        "duration": 7200,
+        "expired": true
+    },
+    "f1056ff9-e0bd-47a0-adba-5e11670897e7": {
+        "address": "675 Ponce de Leon Ave NE, Atlanta, GA 30308",
+        "occupied": false
+    }
+}

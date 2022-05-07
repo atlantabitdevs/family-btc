@@ -1,7 +1,8 @@
-const db = require("./db");
-const DB_COLLECTION = "families";
+const debug = require('../utils/debug');
+const db = require('./db');
+const DB_COLLECTION = 'parkLightning';
 
 const collection = db.collection(DB_COLLECTION);
-console.log(`Connected to collection ${db.projectId}/${DB_COLLECTION}`);
+debug.info(`Connected to collection ${db.projectId}/${DB_COLLECTION}`);
 
-export default collection;
+module.exports = collection;

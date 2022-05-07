@@ -1,7 +1,7 @@
-const fetch = require('node');
+const fetch = require('node-fetch');
 const BASE_URL = process.env.BASE_URL;
 
-const InitSensei = async (username, passphrase, alias, electrum_url, start) => {
+const initSensei = async (username, passphrase, alias, electrum_url, start) => {
     const res = await fetch(`${BASE_URL}/v1/init`, {
         method: 'POST',
         body: {
@@ -17,7 +17,7 @@ const InitSensei = async (username, passphrase, alias, electrum_url, start) => {
     return await res.json();
 };
 
-const ListNodes = async (page, take, query) => {
+const listNodes = async (page, take, query) => {
     const res = await fetch(`${BASE_URL}/v1/nodes`, {
         method: 'GET',
     });
@@ -26,7 +26,7 @@ const ListNodes = async (page, take, query) => {
     return await res.json();
 };
 
-const CreateNode = async (username, passphrase, alias, start) => {
+const createNode = async (username, passphrase, alias, start) => {
     const res = await fetch(`${BASE_URL}/v1/nodes`, {
         method: 'POST',
         body: {
@@ -41,7 +41,7 @@ const CreateNode = async (username, passphrase, alias, start) => {
     return await res.json();
 };
 
-const StartNode = async (pubkey, passphrase) => {
+const startNode = async (pubkey, passphrase) => {
     const res = await fetch(`${BASE_URL}/v1/nodes/start`, {
         method: 'POST',
         body: {
@@ -54,7 +54,7 @@ const StartNode = async (pubkey, passphrase) => {
     return await res.json();
 };
 
-const StopNode = async (pubkey) => {
+const stopNode = async (pubkey) => {
     const res = await fetch(`${BASE_URL}/v1/nodes/stop`, {
         method: 'POST',
         body: {
@@ -66,7 +66,7 @@ const StopNode = async (pubkey) => {
     return await res.json();
 };
 
-const DeleteNode = async (pubkey) => {
+const deleteNode = async (pubkey) => {
     const res = await fetch(`${BASE_URL}/v1/nodes/delete`, {
         method: 'POST',
         body: {
@@ -78,7 +78,7 @@ const DeleteNode = async (pubkey) => {
     return await res.json();
 };
 
-const NodeStatus = async () => {
+const nodeStatus = async () => {
     const res = await fetch(`${BASE_URL}/v1/status`, {
         method: 'GET',
     });
@@ -87,7 +87,7 @@ const NodeStatus = async () => {
     return await res.json();
 };
 
-const StartSensi = async (passphrase) => {
+const startSensi = async (passphrase) => {
     const res = await fetch(`${BASE_URL}/v1/start`, {
         method: 'POST',
         body: {
@@ -99,7 +99,7 @@ const StartSensi = async (passphrase) => {
     return await res.json();
 };
 
-const Login = async (username, passphrase) => {
+const login = async (username, passphrase) => {
     const res = await fetch(`${BASE_URL}/v1/login`, {
         method: 'POST',
         body: {
@@ -112,7 +112,7 @@ const Login = async (username, passphrase) => {
     return await res.json();
 };
 
-const Logout = async () => {
+const logout = async () => {
     const res = await fetch(`${BASE_URL}/v1/logout`, {
         method: 'POST',
     });
@@ -121,7 +121,7 @@ const Logout = async () => {
     return await res.json();
 };
 
-const GetConfig = async () => {
+const getConfig = async () => {
     const res = await fetch(`${BASE_URL}/v1/config`, {
         method: 'GET',
     });
@@ -130,7 +130,7 @@ const GetConfig = async () => {
     return await res.json();
 };
 
-const UpdateConfig = async (electrum_url) => {
+const updateConfig = async (electrum_url) => {
     const res = await fetch(`${BASE_URL}/v1/config`, {
         method: 'POST',
         body: {
@@ -143,16 +143,16 @@ const UpdateConfig = async (electrum_url) => {
 };
 
 export {
-    InitSensei,
-    ListNodes,
-    CreateNode,
-    StartNode,
-    StopNode,
-    DeleteNode,
-    NodeStatus,
-    StartSensi,
-    Login,
-    Logout,
-    GetConfig,
-    UpdateConfig,
+    initSensei,
+    listNodes,
+    createNode,
+    startNode,
+    stopNode,
+    deleteNode,
+    nodeStatus,
+    startSensi,
+    login,
+    logout,
+    getConfig,
+    updateConfig,
 };
