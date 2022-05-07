@@ -1,13 +1,9 @@
 const debug = require('../../utils/debug');
-const sensei = require('../../sensei/admin');
+const senseiAdmin = require('../../sensei/admin');
 
-const getAllowance = async (amount, memo) => {
+const getNodeAllowance = async (username) => {
     try {
-        const allowance = await sensei.getAllowance({
-            amount: amount,
-            currency: 'USD',
-            description: JSON.stringify(memo)
-        });
+        // get allowance from firestore
         return { success: true, message: charge };
     } catch (error) {
         debug.error(error.stack, error.status, error.message);
@@ -15,4 +11,4 @@ const getAllowance = async (amount, memo) => {
     }
 };
 
-module.exports = { getAllowance };
+module.exports = { getNodeAllowance };

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express();
 
-const { getAllowance } = require('./node');
+const { getNodeAllowance } = require('./nodeController');
 
 
-router.get('/allowance', getAllowance);
+router.get('/allowance', getNodeAllowance);
 
 module.exports = router;
