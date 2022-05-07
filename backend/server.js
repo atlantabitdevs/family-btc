@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { app, PORT } = require('./app');
 const debug = require('./utils/debug');
 
