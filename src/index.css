@@ -5,3 +5,6 @@
 @tailwind utilities;
 
 
+.app {
+    @apply bg-fam-bg-dark text-white min-h-screen font-light flex flex-col;
+}

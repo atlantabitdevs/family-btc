@@ -7,8 +7,8 @@ import Onboarding from './routes/Onboarding';
 
 function App() {
   return (
-    <div>
-      <nav>
+    <div className="app">
+      <nav className="hidden">
         <Link to="/admin">Admin</Link>
         <Link to="account/BitDevs/Steven">Bitdevs/Steven</Link>
         <Link to="account/BitDevs/Alex">Bitdevs/Alex</Link>
