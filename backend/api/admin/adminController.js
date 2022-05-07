@@ -1,10 +1,10 @@
 const debug = require('../../utils/debug');
-const spotService = require('./adminService');
+const adminService = require('./adminService');
 
 const getParkingSpotDetails = async (req, res) => {
     try {
         const uuid = req._parsedUrl.query.split('=')[1];
-        const response = await spotService.getParkingSpotDetails(uuid);
+        const response = await adminService.getParkingSpotDetails(uuid);
 
         debug.info(`Spot Details Response: ${JSON.stringify(response)}`);
 
@@ -23,7 +23,7 @@ const reserveParkingSpot = async (req, res) => {
         const licensePlate = req.body.licensePlate;
         const duration = req.body.duration;
 
-        const response = await spotService.reserveParkingSpot(
+        const response = await adminService.reserveParkingSpot(
             uuid,
             licensePlate,
             duration
@@ -42,7 +42,7 @@ const reserveParkingSpot = async (req, res) => {
 
 const shouldBeEmpty = async (req, res) => {
     try {
-        const response = await spotService.shouldBeEmpty();
+        const response = await adminService.shouldBeEmpty();
 
         debug.info(`Spot Details Response: ${JSON.stringify(response)}`);
 

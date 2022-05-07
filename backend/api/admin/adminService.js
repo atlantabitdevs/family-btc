@@ -1,6 +1,10 @@
 const debug = require('../../utils/debug');
+
+// replace spots with accounts
 const spots = require('../../db/collection');
 
+
+// replace all functions
 const getParkingSpotDetails = async (uuid) => {
     try {
         return { success: true, message: (await spots.doc(uuid).get()).data() };

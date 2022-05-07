@@ -1,11 +1,11 @@
 const debug = require('../../utils/debug');
-const nodeService = require('./nodeService');
+const accountService = require('./accountService');
 
-const getNodeAllowance = async (req, res) => {
+const getAccountBalance = async (req, res) => {
     try {
         const username = req._parsedUrl.query.split('=')[1];
         username, passphrase, alias, start
-        const response = await nodeService.getNodeAllowance(username);
+        const response = await accountService.getAccountBalance(username);
 
         debug.info(`Invoice Creation Response: ${JSON.stringify(response)}`);
 
@@ -17,4 +17,4 @@ const getNodeAllowance = async (req, res) => {
     }
 };
 
-module.exports = { getNodeAllowance };
+module.exports = { getAccountBalance };
