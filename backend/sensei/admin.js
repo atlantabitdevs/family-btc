@@ -18,7 +18,7 @@ const initSensei = async (username, passphrase, alias, electrum_url, start) => {
 };
 
 const listNodes = async (page, take, query) => {
-    const res = await fetch(`${BASE_URL}/v1/nodes`, {
+    const res = await fetch(`${BASE_URL}/v1/nodes?page=${page || 0}&take=${take || 10}`, {
         method: 'GET',
     });
 

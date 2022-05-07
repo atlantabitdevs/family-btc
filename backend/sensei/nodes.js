@@ -77,3 +77,13 @@ const getPeers = async () => {
         }),
     };
 }
+
+
+export {
+    getUnusedAddress,
+    getBalance,
+    getInfo,
+    getPeers,
+    getChannels,
+    getPayments
+};

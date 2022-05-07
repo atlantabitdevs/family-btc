@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express();
 
-const { getAccountBalance } = require('./accountController');
+const { getAccountAllowance } = require('./accountController');
 
-router.get('/allowance', getAccountBalance);
+router.get('/allowance', getAccountAllowance);
 
 module.exports = router;
