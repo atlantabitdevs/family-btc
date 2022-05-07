@@ -20,7 +20,7 @@ const Home = () => {
           
           <p className="text-lg">Your tribe has no members. Add&nbsp;one! </p>
           
-          <Link to="/">
+          <Link to="/invite">
             <Button><PlusIcon className="w-8 h-8" /> <span>Add Member</span></Button>
           </Link>
         </div>
