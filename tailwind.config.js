@@ -4,6 +4,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      sans: ['Inter', 'sans-serif'],
+      display: ['Quicksand', 'sans-serif']
+    }
   },
   plugins: [],
 }
