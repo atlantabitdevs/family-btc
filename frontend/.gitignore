@@ -9,7 +9,7 @@ logs
 **/*.backup.*
 **/*.back.*
 
-**/node_modules
+node_modules
 bower_components
 
 *.sublime*
@@ -20,4 +20,4 @@ sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/react
 
-**/service-account.json
+service-account.json
