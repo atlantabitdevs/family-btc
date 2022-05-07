@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Account from "./routes/Account";
 import Home from "./routes/Home";
 import NewAccount from "./routes/NewAccount";
+import Onboarding from './routes/Onboarding';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
 
       <Routes>
         <Route path="/admin" />
+        <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/account" element={<NewAccount />}>
           <Route path="/account/:family/:user" element={<Account />} />
           <Route path="/account/new" element={<NewAccount />} />
