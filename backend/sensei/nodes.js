@@ -87,7 +87,7 @@ const payInvoice = async (invoice) => {
     return await res.json();
 }
 
-const keysend = async (destPubkey, amtMsat) => {
+const keySend = async (destPubkey, amtMsat) => {
     const res = await fetch(`${BASE_URL}/v1/node/keysend`,
         {
             method: 'POST',
@@ -101,4 +101,8 @@ const keysend = async (destPubkey, amtMsat) => {
             })
         }
     );
+}
+
+module.exports = {
+    getBalance
 }
