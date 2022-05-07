@@ -11,12 +11,13 @@ import Accounts from "./routes/Accounts";
 import Home from "./routes/Home";
 import Family from "./routes/Family";
 import NewAccount from "./routes/NewAccount";
+import Onboarding from './routes/Onboarding';
 
 const Child = {};
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <nav>
         <NavLink to="/">Home</NavLink> |{" "}
       </nav>
@@ -28,6 +29,7 @@ function App() {
               <Route path=":account" element={<Account />} />
             </Route>
           </Route>
+          <Route path="onboarding" element={<Onboarding />} />
           <Route
             path="*"
             element={
