@@ -12,7 +12,7 @@ const NewFamily = () => {
     <>
       {step === 0 ?
       <div className="p-8 space-y-8 min-h-screen flex flex-col align-center justify-center bg-snowpeaks bg-cover">
-        <h2 className="text-4xl font-display drop-shadow-xl font-[600]">What is your tribe name?</h2>
+        <h2 className="text-4xl font-display drop-shadow-xl font-[600]">What is your family name?</h2>
         
         <p>We'll walk you through the process of creating a bitcoin vault for your family. First, tell us what to call this vault.</p>
         

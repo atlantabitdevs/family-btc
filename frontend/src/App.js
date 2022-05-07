@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="app">
       <nav className={"fixed bg-fam-bg-dark h-screen w-screen z-50 p-8 space-y-8 transition-all " + (menuActive ? 'right-0' : 'right-full')}>
-        <p className="text-4xl lowercase font-display drop-shadow-xl font-[900]">Tribe</p>
+        <p className="text-4xl font-display drop-shadow-xl font-[900]">Cete</p>
         <ul className="space-y-8 text-lg">
           <li>
             <Link className="flex flex-row items-center space-x-2" to="/" onClick={toggleMenu}>
