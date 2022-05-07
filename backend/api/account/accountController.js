@@ -30,6 +30,20 @@ const payInvoice = async (req, res) => {
     }
 };
 
+const getAccountBalance = async (req, res) => {
+    try {
+        const response = await accountService.getAccountBalance();
+
+        debug.info(`Account Balance Response: ${JSON.stringify(response)}`);
+        if (!response.success) res.status(500).json(response);
+        else res.status(200).json(response);
+
+    } catch (error) {
+        debug.error(error.stack);
+        res.status(500).json({ message: error.message, error: error.stack });
+    }
+};
+
 const createInvoice = async (req, res) => {
     try {
         const amountMillisats = req.body.amountMillisats;
@@ -44,4 +58,4 @@ const createInvoice = async (req, res) => {
     }
 };
 
-module.exports = { getAccountAllowance, payInvoice, createInvoice };
+module.exports = { getAccountAllowance, payInvoice, createInvoice, getAccountBalance };
