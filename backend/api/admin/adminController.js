@@ -5,12 +5,10 @@ const senseiNodes = require('../../sensei/nodes');
 
 const getAllBalances = async (req, res) => {
     try {
-        const response = adminService.getAllBalances();
+        const response = await adminService.getAllBalances();
         debug.info(`Admin All Balances Response: ${JSON.stringify(response)}`);
-
         if (!response.success) res.status(500).json(response);
         else res.status(200).json(response);
-
     } catch (error) {
         debug.error(error.stack);
         res.status(500).json({ message: error.message, error: error.stack });

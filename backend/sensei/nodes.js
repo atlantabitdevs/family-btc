@@ -1,4 +1,4 @@
-const apiCall = require('../utils/apiCall');
+const { apiCall } = require('../utils/apiCall');
 
 const getUnusedAddress = async () => {
     const { address } = await apiCall('/v1/node/wallet/address', 'GET')
@@ -6,7 +6,7 @@ const getUnusedAddress = async () => {
 }
 
 const getBalance = async () => {
-    const { balance } = await apiCall('/v1/node/wallet/balance', 'GET')
+    const balance = await apiCall('/v1/node/wallet/balance', 'GET')
     return await balance.json();
 }
 
@@ -34,62 +34,28 @@ const getInfo = async () => {
 }
 
 const getPeers = async () => {
-    const { peers } = await fetch(`${BASE_URL}/v1/node/peers`);
+    const { peers } = await apiCall('/v1/node/peers', 'GET')
     return await peers.json();
 }
 
 const stopNode = async () => {
-    const res = await fetch(`${BASE_URL}/v1/node/stop`);
+    const res = await apiCall('/v1/node/stop', 'GET');
     return res.json();
 }
 
 const createInvoice = async (amountMillisats, description) => {
-    const res = await fetch(`${BASE_URL}/v1/node/invoices`,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                amt_msat: amountMillisats,
-                description,
-            }),
-        });
+    const res = await apiCall('/v1/node/invoices', 'POST', { amt_msat: amountMillisats, description });
     return await res.json();
 }
 
 const payInvoice = async (invoice) => {
-    const res = await fetch(`${BASE_URL}/v1/node/invoices/pay`,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                invoice
-            })
-        }
-
-    );
+    const res = await apiCall('/v1/node/invoices/pay', 'POST', { invoice });
     return await res.json();
 }
 
 const keysend = async (destPubkey, amtMsat) => {
-    const res = await fetch(`${BASE_URL}/v1/node/keysend`,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                dest_pubkey: destPubkey,
-                amt_msat: amtMsat
-            })
-        }
-    );
+    const res = await apiCall('/v1/node/invoices/pay', 'POST', { dest_pubkey: destPubkey, amt_msat: amtMsat });
+    return await res.json();
 }
 
 

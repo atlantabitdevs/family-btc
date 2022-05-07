@@ -46,4 +46,4 @@ const createInvoice = async (req, res) => {
     }
 };
 
-module.exports = { getAccountAllowance };
+module.exports = { getAccountAllowance, payInvoice, createInvoice };

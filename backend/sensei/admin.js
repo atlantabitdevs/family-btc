@@ -30,8 +30,7 @@ const listNodes = async (page, take, query) => {
         headers: {
             'Content-Type': 'application/json',
             'Cookie': `macaroon=${MACAROON}; token=${TOKEN}`
-        },
-        credentials: 'include',
+        }
     });
 
     console.log(res);
