@@ -16,6 +16,7 @@ import React from 'react';
 import {ContactsIcon, CrossIcon, GearIcon, MenuIcon} from '@bitcoin-design/bitcoin-icons-react/filled';
 import {ChartSquareBarIcon} from '@heroicons/react/solid';
 import NewFamily from './routes/NewFamily';
+import Invite from './routes/Invite';
 
 const Child = {};
 
@@ -56,6 +57,7 @@ function App() {
 
       <Routes>
         <Route path="onboarding" element={<Onboarding />} />
+        <Route path="invite" element={<Invite />} />
         <Route path="new-family" element={<NewFamily />} />
         <Route path="/" element={<Home />}>
           <Route path="family" element={<Family />}>

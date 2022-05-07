@@ -20,3 +20,7 @@
 h1, h2 {
     @apply font-display;
 }
+
+.tile {
+    @apply rounded-lg bg-fam-bg-dark p-8 drop-shadow-lg my-4 border border-fam-teal border-solid space-y-4 flex flex-col;
+}
