@@ -10,7 +10,7 @@
 }
 
 .default-bg {
-    @apply fixed h-screen w-screen;
+    @apply fixed h-screen w-screen z-0;
     opacity: 0.10;
     filter: blur(8px);
     background-image: url('../public/pebbles.jpg');
@@ -19,4 +19,8 @@
 
 h1, h2 {
     @apply font-display;
+}
+
+.tile {
+    @apply rounded-lg bg-fam-bg-dark p-8 drop-shadow-lg my-4 border border-fam-teal border-solid space-y-4 flex flex-col;
 }
