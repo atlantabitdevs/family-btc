@@ -2,17 +2,13 @@ const fetch = require('node-fetch');
 const BASE_URL = process.env.BASE_URL;
 
 const getUnusedAddress = async () => {
-    const res = await fetch(`${BASE_URL}/v1/node/wallet/address`, {
-        method: 'GET'
-    });
+    const res = await fetch(`${BASE_URL}/v1/node/wallet/address`);
     console.log(res);
     return await res.json();
 }
 
 const getBalance = async () => {
-    const res = await fetch(`${BASE_URL}/v1/node/wallet/balance`, {
-        method: 'GET'
-    });
+    const res = await fetch(`${BASE_URL}/v1/node/wallet/balance`);
     console.log(res);
     return await res.json();
 }
@@ -23,34 +19,15 @@ const getChannels = async ({ page, searchTerm, take }) => {
         method: 'GET'
     });
 
-    return await channels;
+    return await channels.json();
 }
 
 const getPayments = async ({ filter = {}, pagination }) => {
     const { page, take, } = pagination;
 
-    const res = await fetch(
-        `${BASE_URL}/v1/node/payments?page=${page}&take=${take}`,
-    );
+    const res = await fetch(`${BASE_URL}/v1/node/payments?page=${page}&take=${take}`);
 
-    return {
-        pagination: res.pagination,
-        payments: res.payments.map((payment) => {
-            return {
-                id: payment.id,
-                paymentHash: payment.payment_hash,
-                preimage: payment.preimage,
-                secret: payment.secret,
-                status: payment.status,
-                origin: payment.origin,
-                amtMsat: payment.amt_msat,
-                createdAt: payment.created_at,
-                updatedAt: payment.updated_at,
-                label: payment.label,
-                invoice: payment.invoice,
-            };
-        }),
-    };
+    return await res.json();
 }
 
 const getInfo = async () => {
@@ -69,21 +46,59 @@ const getInfo = async () => {
 const getPeers = async () => {
     const { peers } = await fetch(`${BASE_URL}/v1/node/peers`);
 
-    return {
-        peers: peers.map((peer) => {
-            return {
-                nodePubkey: peer.node_pubkey,
-            };
-        }),
-    };
+    return await peers.json();
 }
 
+const stopNode = async () => {
+    const res = await fetch(`${BASE_URL}/v1/node/stop`);
+    return res.json();
+}
 
-export {
-    getUnusedAddress,
-    getBalance,
-    getInfo,
-    getPeers,
-    getChannels,
-    getPayments
-};
+const createInvoice = async (amountMillisats, description) => {
+    const res = await fetch(`${BASE_URL}/v1/node/invoices`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                amt_msat: amountMillisats,
+                description,
+            }),
+        });
+    return await res.json();
+}
+
+const payInvoice = async (invoice) => {
+    const res = await fetch(`${BASE_URL}/v1/node/invoices/pay`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                invoice
+            })
+        }
+
+    );
+    return await res.json();
+}
+
+const keysend = async (destPubkey, amtMsat) => {
+    const res = await fetch(`${BASE_URL}/v1/node/keysend`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                dest_pubkey: destPubkey,
+                amt_msat: amtMsat
+            })
+        }
+    );
+}
