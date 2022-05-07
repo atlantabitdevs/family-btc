@@ -8,7 +8,7 @@ const getAllBalances = async (req, res) => {
         const response = await senseiAdmin.listNodes();
         let nodes = [];
         for (let node of response.nodes) {
-            node.balance = (await senseiNodes.getBalance(node.username)).balance_satoshis;
+            node.balance = (await senseiNodes.getBalance()).balance_satoshis;
             nodes.push(node);
         }
         return { success: true, message: nodes };

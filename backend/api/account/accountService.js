@@ -5,49 +5,41 @@ const accounts = require('../../db/collection');
 const getAccountAllowance = async (username) => {
     try {
         // get allowance from firestore
-        return { success: true, message: charge };
+        return { success: true, message: nodes };
     } catch (error) {
-        debug.error(error.stack, error.status, error.message);
+        debug.error(error.stack);
         throw new Error(error);
     }
 };
 
-const getAccountBalance = async (username) => {
+const getAccountBalance = async () => {
     try {
-        
-        return { success: true, message: charge };
+        const response = await senseiNodes.getBalance();
+        return { success: true, message: response.balance_satoshis };
     } catch (error) {
-        debug.error(error.stack, error.status, error.message);
+        debug.error(error.stack);
         throw new Error(error);
     }
 };
 
-const payInvoice = async (req, res) => {
+const payInvoice = async (invoice) => {
     try {
-        const invoice = req.body.invoice;
         const response = await senseiNodes.payInvoice(invoice);
-        debug.info(`Pay Invoice Response: ${JSON.stringify(response)}`);
-        if (!response.success) res.status(500).json(response);
-        else res.status(200).json(response);
+        return { success: true, message: response };
     } catch (error) {
         debug.error(error.stack);
-        res.status(500).json({ message: error.message, error: error.stack });
+        throw new Error(error);
     }
 };
 
-const createInvoice = async (req, res) => {
+const createInvoice = async (amountMillisats, description) => {
     try {
-        const amountMillisats = req.body.amountMillisats;
-        const description = req.body.description;
         const response = await senseiNodes.createInvoice(amountMillisats, description);
-        debug.info(`Create Invoice Response: ${JSON.stringify(response)}`);
-        if (!response.success) res.status(500).json(response);
-        else res.status(200).json(response);
-
+        return { success: true, message: response };
     } catch (error) {
         debug.error(error.stack);
-        res.status(500).json({ message: error.message, error: error.stack });
+        throw new Error(error);
     }
 };
 
-module.exports = { getAccountAllowance, payInvoice, createInvoice };
+module.exports = { getAccountAllowance, payInvoice, createInvoice, getAccountBalance };
