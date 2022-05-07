@@ -9,7 +9,7 @@ logs
 **/*.backup.*
 **/*.back.*
 
-**/node_modules
+node_modules
 bower_components
 
 *.sublime*
@@ -18,12 +18,6 @@ psd
 thumb
 sketch
 
-<<<<<<< HEAD
-*.lock
-
-# End of https://www.toptal.com/developers/gitignore/api/react
-=======
 # End of https://www.toptal.com/developers/gitignore/api/react
 
-**/service-account.json
->>>>>>> 18ffdb861cdf24a7ebaea8c6f91205ed97a03c98
+service-account.json
