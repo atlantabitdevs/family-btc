@@ -53,13 +53,30 @@ const payInvoice = async (invoice) => {
     return await res.json();
 }
 
+<<<<<<< HEAD
 const keysend = async (destPubkey, amtMsat) => {
     const res = await apiCall('/v1/node/invoices/pay', 'POST', { dest_pubkey: destPubkey, amt_msat: amtMsat });
     return await res.json();
+=======
+const keySend = async (destPubkey, amtMsat) => {
+    const res = await fetch(`${BASE_URL}/v1/node/keysend`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                dest_pubkey: destPubkey,
+                amt_msat: amtMsat
+            })
+        }
+    );
+>>>>>>> e295aada2015b250764e2aa5e1db0e8d8a7f6d24
 }
 
 
-module.exports = { 
+module.exports = {
     getUnusedAddress,
     getBalance,
     getChannels,
@@ -69,5 +86,5 @@ module.exports = {
     stopNode,
     createInvoice,
     payInvoice,
-    keysend,
+    keySend,
 }
