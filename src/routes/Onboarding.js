@@ -1,7 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import {BitcoinIcon} from '@bitcoin-design/bitcoin-icons-react/filled';
-import {BeakerIcon} from '@heroicons/react/solid';
 import Button from '../components/Button';
 
 const Onboarding = () => {

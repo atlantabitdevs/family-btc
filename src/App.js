@@ -17,7 +17,7 @@ const Child = {};
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <nav>
         <NavLink to="/">Home</NavLink> |{" "}
       </nav>
@@ -29,6 +29,7 @@ function App() {
               <Route path=":account" element={<Account />} />
             </Route>
           </Route>
+          <Route path="onboarding" element={<Onboarding />} />
           <Route
             path="*"
             element={
