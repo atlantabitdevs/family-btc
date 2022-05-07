@@ -33,6 +33,11 @@ function App() {
             </Link>
           </li>
           <li>
+            <Link className="flex flex-row items-center space-x-2" to="/family/BitDevs">
+              <ContactsIcon className="w-8 h-8 inline" /> <span>BitDevs Family</span>
+            </Link>
+          </li>
+          <li>
             <Link className="flex flex-row items-center space-x-2" to="/">
               <ContactsIcon className="w-8 h-8 inline" /> <span>Accounts</span>
             </Link>
