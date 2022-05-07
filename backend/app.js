@@ -28,4 +28,4 @@ const invoice = require('./api/invoice');
 app.use('/api/v1/spot', spot);
 app.use('/api/v1/invoice', invoice);
 
-module.exports = app;
+module.exports = { app, PORT };
