@@ -1,5 +1,6 @@
 import React from "react";
 import Button from '../components/Button';
+import {Link} from 'react-router-dom';
 
 const Onboarding = () => {
   return (
@@ -10,8 +11,9 @@ const Onboarding = () => {
         <p className="text-2xl">Finances for your people</p>
       </div>
       
-      
-      <Button>Create a new tribe</Button>
+      <Link to="/new-family">
+        <Button>Create a new tribe</Button>
+      </Link>
 
       <Button style="free">Restore existing tribe</Button>
       

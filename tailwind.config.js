@@ -6,10 +6,14 @@ module.exports = {
     extend: {
       colors: {
         'fam-orange': '#ff9500',
+        'fam-orange-inactive': '#A68659',
         'fam-bg-dark': '#3B474B'
       },
       backgroundImage: {
         'mountains': "url('../public/mountains.jpg')",
+        'snowpeaks': "url('../public/snowpeaks.jpg')",
+        'clouds': "url('../public/clouds.jpg')",
+        'boulders': "url('../public/boulders.jpg')",
       }
     },
     fontFamily: {

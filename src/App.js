@@ -15,6 +15,7 @@ import Onboarding from './routes/Onboarding';
 import React from 'react';
 import {ContactsIcon, CrossIcon, GearIcon, MenuIcon} from '@bitcoin-design/bitcoin-icons-react/filled';
 import {ChartSquareBarIcon} from '@heroicons/react/solid';
+import NewFamily from './routes/NewFamily';
 
 const Child = {};
 
@@ -50,6 +51,7 @@ function App() {
 
       <Routes>
         <Route path="onboarding" element={<Onboarding />} />
+        <Route path="new-family" element={<NewFamily />} />
         <Route path="/" element={<Home />}>
           <Route path="family" element={<Family />}>
             <Route path=":family" element={<Accounts />}>
