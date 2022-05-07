@@ -7,7 +7,8 @@ module.exports = {
       colors: {
         'fam-orange': '#ff9500',
         'fam-orange-inactive': '#A68659',
-        'fam-bg-dark': '#3B474B'
+        'fam-bg-dark': '#3B474B',
+        'fam-teal': '#56737D'
       },
       backgroundImage: {
         'mountains': "url('../public/mountains.jpg')",
