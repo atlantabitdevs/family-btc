@@ -23,9 +23,4 @@ app.get('/', async (req, res) => {
     res.send(`Health check! Server running on port ${PORT}!`);
 });
 
-const spot = require('./api/spot');
-const invoice = require('./api/invoice');
-app.use('/api/v1/spot', spot);
-app.use('/api/v1/invoice', invoice);
-
 module.exports = { app, PORT };
