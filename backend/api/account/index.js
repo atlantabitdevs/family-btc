@@ -3,6 +3,6 @@ const router = express();
 
 const { getAccountBalance } = require('./accountController');
 
-router.get('/allowance', getAccountBalance);
+router.get('/:username/balance', getAccountBalance);
 
 module.exports = router;

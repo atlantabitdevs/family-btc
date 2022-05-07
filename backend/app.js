@@ -23,4 +23,8 @@ app.get('/', async (req, res) => {
     res.send(`Health check! Server running on port ${PORT}!`);
 });
 
+const GLOBAL_ROUTE_PREFIX = '/api/v1';
+const accountRouter = require('./api/account');
+app.use(`${GLOBAL_ROUTE_PREFIX}/account`, accountRouter);
+
 module.exports = { app, PORT };
