@@ -1063,6 +1063,11 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@bitcoin-design/bitcoin-icons-react@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@bitcoin-design/bitcoin-icons-react/-/bitcoin-icons-react-0.1.9.tgz#25c18808f167e242cd15ba27c185d785f2728980"
+  integrity sha512-nJvTD1+zG/ffHdMeGQ39vdsmEFo9WcCIP1RlR7ZpZoP2H+IgKwzwow8VSY6ebroLoCT7WWtUPJQSbgQwgWYrFg==
+
 "@csstools/normalize.css@*":
   version "12.0.0"
   resolved "https://registry.npmjs.org/@csstools/normalize.css/-/normalize.css-12.0.0.tgz"
