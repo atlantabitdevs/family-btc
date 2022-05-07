@@ -1,7 +1,7 @@
 const debug = require('../../utils/debug');
 const senseiAdmin = require('../../sensei/admin');
 
-const getAccountBalance = async (username) => {
+const getAccountAllowance = async (username) => {
     try {
         // get allowance from firestore
         return { success: true, message: charge };
@@ -11,4 +11,4 @@ const getAccountBalance = async (username) => {
     }
 };
 
-module.exports = { getAccountBalance };
+module.exports = { getAccountAllowance };

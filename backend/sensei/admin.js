@@ -142,7 +142,7 @@ const updateConfig = async (electrum_url) => {
     return await res.json();
 };
 
-export {
+module.exports = {
     initSensei,
     listNodes,
     createNode,

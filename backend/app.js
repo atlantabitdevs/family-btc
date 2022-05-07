@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 const cors = require('cors');
@@ -20,12 +20,12 @@ app.use(
 );
 
 app.get('/', async (req, res) => {
-    res.send(`Health check! Server running on port ${PORT}!`);
+    res.send(`Health check! Server srunning on port ${PORT}!`);
 });
 
-const spot = require('./api/spot');
-const invoice = require('./api/invoice');
-app.use('/api/v1/spot', spot);
-app.use('/api/v1/invoice', invoice);
+const account = require('./api/account');
+const admin = require('./api/admin');
+app.use('/api/v1/account', account);
+app.use('/api/v1/admin', admin);
 
 module.exports = { app, PORT };
