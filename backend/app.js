@@ -20,7 +20,7 @@ app.use(
 );
 
 app.get('/', async (req, res) => {
-    res.send(`Health check! Server srunning on port ${PORT}!`);
+    res.send(`Health check! Server running on port ${PORT}!`);
 });
 
 const account = require('./api/account');

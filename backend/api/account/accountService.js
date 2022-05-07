@@ -1,5 +1,6 @@
 const debug = require('../../utils/debug');
 const senseiAdmin = require('../../sensei/admin');
+const accounts = require('../../db/collection');
 
 const getAccountAllowance = async (username) => {
     try {

@@ -5,14 +5,8 @@ const senseiNodes = require('../../sensei/nodes');
 
 const getAllBalances = async (req, res) => {
     try {
-        const response = await senseiAdmin.listNodes();
-        let nodesBalances = []
-        for(let node of response.nodes){
-            node.balance = await senseiNodes.getBalance(node.username);
-            nodesBalances.push(node)
-        }
-
-        debug.info(`Admin All Balances Response: ${nodesBalances}`);
+        const response = adminService.getAllBalances();
+        debug.info(`Admin All Balances Response: ${JSON.stringify(response)}`);
 
         if (!response.success) res.status(500).json(response);
         else res.status(200).json(response);
