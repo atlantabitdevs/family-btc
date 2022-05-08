@@ -51,4 +51,31 @@ const keysend = async (req, res) => {
     }
 }
 
-module.exports = { getAllBalances, addNewAccount, keysend };
+// Request body:
+// ```
+// {
+//   accountName: string,
+//   permissions: {
+//     isAdmin: boolean,
+//     hasAllowance: boolean,
+//     canSpend: boolean,
+//   }
+// }
+// ```
+const updatePermissions = async (req, res) => {
+    try {
+        // TODO: Input verification logic?
+        const accountName = req.body.accountName;
+        const newPermissions = req.body.permissions;
+        const response = await adminService.updatePermissions(accountName, newPermissions);
+        debug.info(`Response for updating a family member's permissions: ${JSON.stringify(response)}`);
+
+        if (!response.success) res.status(500).json(response);
+        else res.status(200).json(response);
+    } catch (error) {
+        debug.error(error.stack);
+        res.status(500).json({ message: error.message, error: error.stack });
+    }
+};
+
+module.exports = { getAllBalances, addNewAccount, keysend, updatePermissions };
