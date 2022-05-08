@@ -80,6 +80,8 @@ See the rough demo online [here](https://cete.atlantabitdevs.org).
 
 ![Cete](frontend/public/cete-08.jpg)
 
+We are the [Atlanta BitDevs](https://atlantabitdevs.org).
+
 ## Thank You
 
 ![Cete](frontend/public/cete-09.jpg)
