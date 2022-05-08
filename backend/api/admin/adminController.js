@@ -54,7 +54,6 @@ const keysend = async (req, res) => {
 // Request body:
 // ```
 // {
-//   accountName: string,
 //   permissions: {
 //     isAdmin: boolean,
 //     hasAllowance: boolean,
@@ -65,7 +64,7 @@ const keysend = async (req, res) => {
 const updatePermissions = async (req, res) => {
     try {
         // TODO: Input verification logic?
-        const accountName = req.body.accountName;
+        const accountName = req.params.username;
         const newPermissions = req.body.permissions;
         const response = await adminService.updatePermissions(accountName, newPermissions);
         debug.info(`Response for updating a family member's permissions: ${JSON.stringify(response)}`);

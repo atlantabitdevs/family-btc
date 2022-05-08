@@ -6,7 +6,7 @@ const { getAllBalances, addNewAccount, keysend, updatePermissions, setAccountAll
 router.get('/balances', getAllBalances);
 router.post('/add', addNewAccount);
 router.post('/transfer', keysend);
-router.post('/permissions', updatePermissions)
+router.post('/account/:username/permissions', updatePermissions)
 router.post('/allowance', setAccountAllowance)
 
 module.exports = router;
