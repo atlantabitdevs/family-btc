@@ -1,15 +1,23 @@
 const debug = require('../../utils/debug');
 const senseiNodes = require('../../sensei/nodes');
-const accounts = require('../../db/collection');
+const collection = require('../../db/collection');
 
-const getAccountAllowance = async (username) => {
-    try {
-        // get allowance from firestore
-        return { success: true, message: nodes };
-    } catch (error) {
-        debug.error(error.stack);
-        throw new Error(error);
+const DOC_NAME = 'nicks-family';
+const MEMBERS_SUBCOLLECTION_NAME = 'members';
+
+const getAccountAllowance = async (accountName) => {
+    const docRef = await collection.doc(DOC_NAME).collection(MEMBERS_SUBCOLLECTION_NAME).doc(accountName);
+    const doc = await docRef.get();
+    if (!doc.exists) {
+        const errMsg = `Firestore document "${docName}/${subcollectionName}/${accountName}" does not exist in the families collection`;
+        debug.error(errMsg);
+        throw new Error(errMsg);
     }
+
+    // TODO: Error handling?
+    const allowance = doc.data().allowance;
+    return { success: true, allowance };
+
 };
 
 const getAccountBalance = async () => {
@@ -20,6 +28,20 @@ const getAccountBalance = async () => {
         debug.error(error.stack);
         throw new Error(error);
     }
+};
+
+const getAccountPermissions = async (accountName) => {
+    const docRef = await collection.doc(DOC_NAME).collection(MEMBERS_SUBCOLLECTION_NAME).doc(accountName);
+    const doc = await docRef.get();
+    if (!doc.exists) {
+        const errMsg = `Firestore document "${docName}/${subcollectionName}/${accountName}" does not exist in the families collection`;
+        debug.error(errMsg);
+        throw new Error(errMsg);
+    }
+
+    // TODO: Error handling?
+    const permissions = doc.data().permissions;
+    return { success: true, permissions };
 };
 
 const payInvoice = async (invoice) => {
@@ -42,4 +64,4 @@ const createInvoice = async (amountMillisats, description) => {
     }
 };
 
-module.exports = { getAccountAllowance, payInvoice, createInvoice, getAccountBalance };
+module.exports = { getAccountAllowance, payInvoice, createInvoice, getAccountBalance, getAccountPermissions  };

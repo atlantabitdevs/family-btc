@@ -1,4 +1,4 @@
-import {CaretDownIcon, ContactsIcon, CopyIcon, QrCodeIcon, ShareIcon} from "@bitcoin-design/bitcoin-icons-react/filled";
+import { CaretDownIcon, ContactsIcon, CopyIcon, EditIcon, QrCodeIcon, ShareIcon } from "@bitcoin-design/bitcoin-icons-react/filled";
 import Button from "../components/Button";
 import InputText from "../components/InputText";
 
@@ -28,7 +28,7 @@ const Receive = () => {
             </div>
           </div>
 
-          <div className="flex justify-around align-center mt-1">
+          <div className="flex justify-around align-center mt-2">
             <div>
               <Button style="free" size="small">
                 <ContactsIcon width="32" height="32" />
@@ -37,7 +37,7 @@ const Receive = () => {
             </div>
             <div>
               <Button style="free" size="small">
-                <CopyIcon width="32" height="32" />
+                <EditIcon width="32" height="32" />
                 <div className="text-sm">Notes & Tags</div>
               </Button>
             </div>
