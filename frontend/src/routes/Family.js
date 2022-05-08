@@ -27,7 +27,7 @@ const Family = () => {
       name: 'Gertrude',
       photo: '/grandmother.jpg',
       balance: '90,000,023',
-      id: 'gertrude'
+      id: 'gertrude/grandma'
     }
   ])
   
