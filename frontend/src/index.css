@@ -32,3 +32,7 @@ h1, h2 {
 .slots *:last-child {
     @apply border-b-0;
 }
+
+.kid {
+    @apply bg-[#7350BC];
+}
