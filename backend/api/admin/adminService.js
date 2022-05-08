@@ -3,6 +3,9 @@ const collection = require('../../db/collection');
 const senseiAdmin = require('../../sensei/admin');
 const senseiNodes = require('../../sensei/nodes');
 
+const DOC_NAME = 'nicks-family';
+const MEMBERS_SUBCOLLECTION_NAME = 'members';
+
 const getAllBalances = async (req, res) => {
     try {
         const response = await senseiAdmin.listNodes();
@@ -19,9 +22,7 @@ const getAllBalances = async (req, res) => {
 };
 
 const updatePermissions = async (accountName, newPermissions) => {
-    const docName = 'nicks-family';
-    const subcollectionName = 'members';
-    const docRef = await collection.doc(docName).collection(subcollectionName).doc(accountName);
+    const docRef = await collection.doc(DOC_NAME).collection(MEMBERS_SUBCOLLECTION_NAME).doc(accountName);
     const doc = await docRef.get();
     if (!doc.exists) {
         const errMsg = `Firestore document "${docName}/${subcollectionName}/${accountName}" does not exist in the families collection`;
@@ -34,4 +35,18 @@ const updatePermissions = async (accountName, newPermissions) => {
     return { success: true };
 };
 
-module.exports = { getAllBalances, updatePermissions };
+const setAccountAllowance = async (accountName, newAllowance) => {
+    const docRef = await collection.doc(DOC_NAME).collection(MEMBERS_SUBCOLLECTION_NAME).doc(accountName);
+    const doc = await docRef.get();
+    if (!doc.exists) {
+        const errMsg = `Firestore document "${docName}/${subcollectionName}/${accountName}" does not exist in the families collection`;
+        debug.error(errMsg);
+        throw new Error(errMsg);
+    }
+
+    // TODO: Error handling?
+    await docRef.update({ allowance: newAllowance, "permissions.hasAllowance": true });
+    return { success: true };
+};
+
+module.exports = { getAllBalances, updatePermissions, setAccountAllowance };
