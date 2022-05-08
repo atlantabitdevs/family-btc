@@ -1,4 +1,4 @@
-import { ContactsIcon, CopyIcon, QrCodeIcon, ShareIcon } from "@bitcoin-design/bitcoin-icons-react/filled";
+import {CaretDownIcon, ContactsIcon, CopyIcon, QrCodeIcon, ShareIcon} from "@bitcoin-design/bitcoin-icons-react/filled";
 import Button from "../components/Button";
 import InputText from "../components/InputText";
 
@@ -13,16 +13,16 @@ const Receive = () => {
           <div className="tile">
             <QrCodeIcon />
           </div>
-          <div className="flex justify-around align-center ">
-            <div className="outline outline-1">
+          <div className="flex justify-around align-center space-x-4">
+            <div className="outline outline-1 rounded-md basis-1/2">
               <Button style="free" size="small">
-                <ShareIcon width="52" height="52" />
+                <ShareIcon className="w-8 h-8" />
                 <div>Share</div>
               </Button>
             </div>
-            <div className="outline outline-1">
+            <div className="outline outline-1 rounded-md basis-1/2">
               <Button style="free" size="small">
-                <CopyIcon width="52" height="52" />
+                <CopyIcon className="w-8 h-8" />
                 <div>Copy</div>
               </Button>
             </div>
@@ -43,15 +43,10 @@ const Receive = () => {
             </div>
           </div>
 
-          <div className="tile">
-            <InputText placeholder="Details and Settings              v" />
-
-
+          <div className="w-full bg-fam-bg-dark flex flex-row justify-around align-start items-center p-4 rounded-md mt-8">
+            <span className="basis-1/2">Details &amp; Settings</span> <CaretDownIcon className="w-8 h-8" />
           </div>
-
-
         </div>
-        <h1>This is the Receive screen</h1>
       </div>
     </>
   );
