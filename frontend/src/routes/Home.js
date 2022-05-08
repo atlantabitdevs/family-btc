@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import Button from '../components/Button';
-import {PlusIcon} from '@heroicons/react/solid';
-import {ReceiveIcon, ScanIcon, SendIcon} from '@bitcoin-design/bitcoin-icons-react/filled';
+import { PlusIcon } from '@heroicons/react/solid';
+import { ReceiveIcon, ScanIcon, SendIcon } from '@bitcoin-design/bitcoin-icons-react/filled';
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
       <div className="default-bg"></div>
       <div className="min-w-screen min-h-screen p-8 flex flex-col justify-center z-10 relative">
         <h1 className="text-2xl">Welcome, Jerry</h1>
-        
+
         <div className="tile">
           <h2 className="mb-4">Your Balance</h2>
           <p className="text-4xl">1000 <span>sats</span></p>
@@ -18,9 +18,9 @@ const Home = () => {
 
         <div className="tile">
           <h2>Members</h2>
-          
+
           <p className="text-lg">Your tribe has no members. Add&nbsp;one! </p>
-          
+
           <Link to="/invite">
             <Button><PlusIcon className="w-8 h-8" /> <span>Add Member</span></Button>
           </Link>
@@ -34,7 +34,7 @@ const Home = () => {
           <Link to="/" className="basis-1/3">
             <Button size="large" direction="vertical"><ScanIcon className="w-8 h-8" /> <span>Scan</span></Button>
           </Link>
-          <Link to="/onboarding" className="basis-1/3">
+          <Link to="/receive" className="basis-1/3">
             <Button size="large" direction="vertical">
               <ReceiveIcon className="w-8 h-8" /> <span>Receive</span>
             </Button>
