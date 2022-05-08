@@ -5,7 +5,7 @@ const { getAccountAllowance, payInvoice, createInvoice, getAccountBalance, getAc
 
 router.get('/account/balance', getAccountBalance);
 router.get('/:username/permissions', getAccountPermissions);
-router.get('/allowance', getAccountAllowance);
+router.get('/:username/allowance', getAccountAllowance);
 router.get('/payment/send', payInvoice);
 router.get('/payment/receive', createInvoice);
 

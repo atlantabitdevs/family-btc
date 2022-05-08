@@ -3,12 +3,13 @@ const accountService = require('./accountService');
 
 const getAccountAllowance = async (req, res) => {
     try {
-        const username = req.body.username;
-        const response = await accountService.getAccountAllowance(username);
-        debug.info(`Account Allowance Response: ${JSON.stringify(response)}`);
+        // TODO: Input verification logic?
+        const accountName = req.params.username;
+        const response = await accountService.getAccountAllowance(accountName);
+        debug.info(`Response for getting an account's allowance: ${JSON.stringify(response)}`);
+
         if (!response.success) res.status(500).json(response);
         else res.status(200).json(response);
-
     } catch (error) {
         debug.error(error.stack);
         res.status(500).json({ message: error.message, error: error.stack });
