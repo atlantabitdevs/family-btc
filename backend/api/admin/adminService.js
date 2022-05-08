@@ -1,5 +1,5 @@
 const debug = require('../../utils/debug');
-const accounts = require('../../db/collection');
+const collection = require('../../db/collection');
 const senseiAdmin = require('../../sensei/admin');
 const senseiNodes = require('../../sensei/nodes');
 
@@ -18,4 +18,20 @@ const getAllBalances = async (req, res) => {
     }
 };
 
-module.exports = { getAllBalances };
+const updatePermissions = async (accountName, newPermissions) => {
+    const docName = 'nicks-family';
+    const subcollectionName = 'members';
+    const docRef = await collection.doc(docName).collection(subcollectionName).doc(accountName);
+    const doc = await docRef.get();
+    if (!doc.exists) {
+        const errMsg = `Firestore document "${docName}/${subcollectionName}/${accountName}" does not exist in the families collection`;
+        debug.error(errMsg);
+        throw new Error(errMsg);
+    }
+
+    // TODO: Error handling?
+    await docRef.update({permissions: newPermissions});
+    return { success: true };
+};
+
+module.exports = { getAllBalances, updatePermissions };
