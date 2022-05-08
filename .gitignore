@@ -27,3 +27,6 @@ sketch
 
 # Misc. secrets (API keys, GCP credentials, etc.)
 .env
+
+eslintrc.json
+frontend/eslintrc.json
