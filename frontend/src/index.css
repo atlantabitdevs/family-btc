@@ -17,6 +17,14 @@
     background-size: cover;
 }
 
+.grandma-bg {
+    @apply fixed h-screen w-screen z-0;
+    /*opacity: 0.10;*/
+    filter: blur(2px);
+    background-image: url('../public/flowers.jpg');
+    background-size: cover;
+}
+
 h1, h2 {
     @apply font-display;
 }
@@ -31,4 +39,16 @@ h1, h2 {
 
 .slots *:last-child {
     @apply border-b-0;
+}
+
+.kid {
+    @apply bg-[#7350BC];
+}
+
+.grandma {
+    @apply bg-rose-100 text-neutral-600 border-rose-300;
+}
+
+.grandma.slots > div {
+    @apply border-rose-300;
 }

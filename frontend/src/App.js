@@ -18,6 +18,8 @@ import { ContactsIcon, CrossIcon, GearIcon, HomeIcon, MenuIcon } from '@bitcoin-
 import { ChartSquareBarIcon } from '@heroicons/react/solid';
 import NewFamily from './routes/NewFamily';
 import Invite from './routes/Invite';
+import Kid from './routes/Kid';
+import Grandma from './routes/Grandma';
 
 const Child = {};
 
@@ -78,6 +80,8 @@ function App() {
         </Route>
         <Route path="family" element={<Family />} />
         <Route path="family/:account" element={<Account />} />
+        <Route path="family/:account/kid" element={<Kid />} />
+        <Route path="family/:account/grandma" element={<Grandma />} />
       </Routes>
     </div>
   );
