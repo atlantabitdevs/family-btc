@@ -35,6 +35,28 @@ const updatePermissions = async (accountName, newPermissions) => {
     return { success: true };
 };
 
+const getAccountAllowance = async (accountName) => {
+    const docRef = await collection.doc(DOC_NAME).collection(MEMBERS_SUBCOLLECTION_NAME).doc(accountName);
+    const doc = await docRef.get();
+    if (!doc.exists) {
+        const errMsg = `Firestore document "${docName}/${subcollectionName}/${accountName}" does not exist in the families collection`;
+        debug.error(errMsg);
+        throw new Error(errMsg);
+    }
+
+    // TODO: Error handling?
+    let data = doc.data();
+    // If permissions indicate that we don't have an allowance, then ignore
+    // whatever value is in that allowance field.
+    if (!data.permissions.hasAllowance) {
+        return { success: true, allowance: -1 };
+    }
+
+    // TODO: Error handling?
+    let allowance = data.allowance;
+    return { success: true, allowance };
+};
+
 const setAccountAllowance = async (accountName, newAllowance) => {
     const docRef = await collection.doc(DOC_NAME).collection(MEMBERS_SUBCOLLECTION_NAME).doc(accountName);
     const doc = await docRef.get();
@@ -49,4 +71,4 @@ const setAccountAllowance = async (accountName, newAllowance) => {
     return { success: true };
 };
 
-module.exports = { getAllBalances, updatePermissions, setAccountAllowance };
+module.exports = { getAllBalances, updatePermissions, getAccountAllowance, setAccountAllowance };
