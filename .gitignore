@@ -30,3 +30,6 @@ sketch
 
 eslintrc.json
 frontend/eslintrc.json
+.eslintignore
+backend/.eslintignore
+.tsconfig.json
