@@ -80,17 +80,16 @@ const updatePermissions = async (req, res) => {
 // Request body:
 // ```
 // {
-//   accountName: string,
 //   allowance: number,
 // }
 // ```
 const setAccountAllowance = async (req, res) => {
     try {
         // TODO: Input verification logic?
-        const accountName = req.body.accountName;
+        const accountName = req.params.username;
         const newAllowance = req.body.allowance;
         const response = await adminService.setAccountAllowance(accountName, newAllowance);
-        debug.info(`Response for updating a family member's permissions: ${JSON.stringify(response)}`);
+        debug.info(`Response for setting a family member's allowance: ${JSON.stringify(response)}`);
 
         if (!response.success) res.status(500).json(response);
         else res.status(200).json(response);

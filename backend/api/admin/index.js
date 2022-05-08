@@ -7,6 +7,6 @@ router.get('/balances', getAllBalances);
 router.post('/add', addNewAccount);
 router.post('/transfer', keysend);
 router.post('/account/:username/permissions', updatePermissions)
-router.post('/allowance', setAccountAllowance)
+router.post('/account/:username/allowance', setAccountAllowance)
 
 module.exports = router;
