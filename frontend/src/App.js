@@ -14,7 +14,7 @@ import NewAccount from "./routes/NewAccount";
 import Onboarding from './routes/Onboarding';
 import Receive from './routes/Receive';
 import React from 'react';
-import { ContactsIcon, CrossIcon, GearIcon, HomeIcon, MenuIcon } from '@bitcoin-design/bitcoin-icons-react/filled';
+import { ContactsIcon, CrossIcon, GearIcon, HomeIcon, MenuIcon } from '@bitcoin-design/bitcoin-icons-react/outline';
 import { ChartSquareBarIcon } from '@heroicons/react/solid';
 import NewFamily from './routes/NewFamily';
 import Invite from './routes/Invite';
@@ -32,10 +32,9 @@ function App() {
 
   return (
     <div className="app">
-      <nav className="mt-4 ml-4">
+      <nav className="fixed top-10 left-10 z-50">
         <Link to="/">
-          <HomeIcon width="38" height="38" />
-          <h1>Home</h1>
+          <HomeIcon className="w-8 h-8" />
         </Link>
       </nav>
       <nav className={"fixed bg-fam-bg-dark h-screen w-screen z-50 p-8 space-y-8 transition-all " + (menuActive ? 'right-0' : 'right-full')}>
